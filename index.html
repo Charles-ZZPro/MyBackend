@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    height=device-height, initial-scale=1.0, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+</body>
+<script src="dist/build.js"></script>
+<script>
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var _height = parseInt(docEl.clientHeight);
+                    if (!_height) return;
+                    docEl.style.fontSize =  _height+ 'px';
+                };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+</html>
